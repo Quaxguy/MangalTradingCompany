@@ -8,14 +8,15 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PasswordResetRequest from './components/PasswordResetRequest';
 import ResetPassword from './components/ResetPassword';
-
+import Homepage from './components/Homepage';
 function App() {
   return (
      <div className='App'>
       <Router>
       <ToastContainer />
           <Routes>
-            <Route path='/' element={<Signup/>}/>
+            <Route path = '/' element={<Homepage/>}/>
+            <Route path='/Signup' element={<Signup/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/dashboard' element={<Profile/>}/>
             <Route path='/otp/verify' element={<VerifyEmail/>}/>

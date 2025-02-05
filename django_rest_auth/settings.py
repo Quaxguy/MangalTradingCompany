@@ -16,12 +16,12 @@ environ.Env.read_env(BASE_DIR / '.env')
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'iHdTcjouO3DshkjFivT7z2Cdo1Xlc4fkDiTHsGPpBdT_o7sysLA7KCe66E-awJ-GgLU'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
 # False if not in os.environ because of casting above
-DEBUG = env('DEBUG')
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['*', 'http://localhost:3000']
@@ -111,11 +111,11 @@ SIMPLE_JWT = {
 DOMAIN='localhost:3000'
 SITE_NAME = 'Henry Ultimate Authentication Course'
 
-GOOGLE_CLIENT_ID=env("GOOGLE_CLIENT_ID")
-GOOGLE_CLIENT_SECRET=env("GOOGLE_CLIENT_SECRET")
-GITHUB_SECRET=env("GITHUB_SECRET")
-GITHUB_CLIENT_ID=env("GITHUB_CLIENT_ID")
-SOCIAL_AUTH_PASSWORD="jgk348030gjw03"
+GOOGLE_CLIENT_ID='336193178911-acts8p6g1he0ooil4o3jqupeononoj9n.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET='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'
+# GITHUB_SECRET=env("GITHUB_SECRET")
+# GITHUB_CLIENT_ID=env("GITHUB_CLIENT_ID")
+# SOCIAL_AUTH_PASSWORD="jgk348030gjw03"
 
 
 # Password validation
@@ -158,9 +158,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-EMAIL_HOST='smtp.mailtrap.io'
-EMAIL_HOST_USER=env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD=env('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL='info@henryjwtauth.com'
-EMAIL_USE_TLS=True
-EMAIL_PORT = '2525'
+# EMAIL_HOST='smtp.mailtrap.io'
+# EMAIL_HOST_USER=env('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD=env('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL='info@henryjwtauth.com'
+# EMAIL_USE_TLS=True
+# EMAIL_PORT = '2525'

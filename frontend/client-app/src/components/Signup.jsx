@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from "axios"
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 const Signup = () => {
     const navigate=useNavigate()
     const [formdata, setFormdata]=useState({
@@ -25,18 +25,18 @@ const Signup = () => {
         console.log(server_res.data)
     }
 
-    useEffect(() => {
-      /* global google */
-      google.accounts.id.initialize({
-        client_id:process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        callback: handleSigninWithGoogle
-      });
-      google.accounts.id.renderButton(
-        document.getElementById("signInDiv"),
-        {theme:"outline", size:"large", text:"continue_with", shape:"circle", width:"280"}
-      );
+    // useEffect(() => {
+    //   /* global google */
+    //   google.accounts.id.initialize({
+    //     client_id:process.env.REACT_APP_GOOGLE_CLIENT_ID,
+    //     callback: handleSigninWithGoogle
+    //   });
+    //   google.accounts.id.renderButton(
+    //     document.getElementById("signInDiv"),
+    //     {theme:"outline", size:"large", text:"continue_with", shape:"circle", width:"280"}
+    //   );
         
-    }, [])
+    // }, [])
 
     const {email, first_name, last_name, password, password2}=formdata
    
@@ -46,7 +46,8 @@ const Signup = () => {
        console.log(response.data)
        const result=response.data
        if (response.status === 201) {
-          navigate("/otp/verify")
+          // navigate("/otp/verify")
+          navigate("/login")
           toast.success(result.message)
        }
 
@@ -103,13 +104,13 @@ const Signup = () => {
                <input type="submit" value="Submit" className="submitButton" />
 
                 </form>
-                 <h3 className='text-option'>Or</h3>
-            <div className='githubContainer'>
-                <button>Sign up with Github</button>
-            </div>
-            <div className='googleContainer'>
-                <div id="signInDiv" className='gsignIn'></div>
-            </div>
+                <p className="text-sm text-gray-600">
+          Already registered?{' '}
+      <Link to="/login" className="text-blue-500 hover:underline">
+        Login
+      </Link>
+    </p>
+            
            </div>
         </div>
 

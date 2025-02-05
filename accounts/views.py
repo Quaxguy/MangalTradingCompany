@@ -12,6 +12,7 @@ from django.utils.encoding import smart_str, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from rest_framework.permissions import IsAuthenticated
 from .models import User
+from .serializers import LoginSerializer
 # Create your views here.
 
 
@@ -24,7 +25,7 @@ class RegisterView(GenericAPIView):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             user_data=serializer.data
-            send_generated_otp_to_email(user_data['email'], request)
+            # send_generated_otp_to_email(user_data['email'], request)
             return Response({
                 'data':user_data,
                 'message':'thanks for signing up a passcode has be sent to verify your email'
@@ -114,3 +115,8 @@ class LogoutApiView(GenericAPIView):
         serializer.save()
         return Response(status=status.HTTP_204_NO_CONTENT)
  
+class GetUserEmailView(GenericAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({'email': request.user.email}, status=200)

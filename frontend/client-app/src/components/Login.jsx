@@ -60,18 +60,18 @@ const Login = () => {
     
 
 
-    useEffect(() => {
-        /* global google */
-        google.accounts.id.initialize({
-          client_id:process.env.REACT_APP_GOOGLE_CLIENT_ID,
-          callback: handleLoginWithGoogle
-        });
-        google.accounts.id.renderButton(
-          document.getElementById("signInDiv"),
-          {theme:"outline", size:"large", text:"continue_with", shape:"circle", width:"280"}
-        );
+    // useEffect(() => {
+    //     /* global google */
+    //     google.accounts.id.initialize({
+    //       client_id:process.env.REACT_APP_GOOGLE_CLIENT_ID,
+    //       callback: handleLoginWithGoogle
+    //     });
+    //     google.accounts.id.renderButton(
+    //       document.getElementById("signInDiv"),
+    //       {theme:"outline", size:"large", text:"continue_with", shape:"circle", width:"280"}
+    //     );
           
-      }, [])
+    //   }, [])
 
 
     const handleSubmit = async(e)=>{
@@ -89,7 +89,7 @@ const Login = () => {
                      localStorage.setItem('token', JSON.stringify(response.access_token))
                      localStorage.setItem('refresh_token', JSON.stringify(response.refresh_token))
                      localStorage.setItem('user', JSON.stringify(user))
-                      await navigate('/dashboard')
+                      await navigate('/')
                      toast.success('login successful')
                  }else{
                     toast.error('something went wrong')
@@ -125,15 +125,15 @@ const Login = () => {
                </div>
                
                <input type="submit" value="Login" className="submitButton" />
-                        <p className='pass-link'><Link to={'/forget-password'}>forgot password</Link></p>
+                        
                 </form>
-                 <h3 className='text-option'>Or</h3>
-            <div className='githubContainer'>
-                <button onClick={handleLoginWithGithub}>Sign in with Github</button>
-            </div>
-            <div className='googleContainer'>
-                <div id="signInDiv" className='gsignIn'></div>
-            </div>
+                <p className="text-sm text-gray-600">
+      Not registered yet?{' '}
+      <Link to="/Signup" className="text-blue-500 hover:underline">
+        Sign Up
+      </Link>
+    </p>
+           
            </div>
         </div>
 
